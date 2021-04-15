@@ -28,7 +28,7 @@ class HomeView extends StatelessWidget {
               Icon(Icons.agriculture, size: (MediaQuery.of(context).size.width / 1.5)),
               Spacer(),
               ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 300),
+                constraints: BoxConstraints.tightFor(width: 300, height: 50),
                 child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.white)

@@ -43,7 +43,7 @@ class ScanBluetoothView extends StatelessWidget {
                   ),
                 ),
                 ConstrainedBox(
-                  constraints: BoxConstraints.tightFor(width: 300),
+                  constraints: BoxConstraints.tightFor(width: 300, height: 50),
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.white)

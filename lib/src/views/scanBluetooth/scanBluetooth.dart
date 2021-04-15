@@ -48,7 +48,9 @@ class ScanBluetoothView extends StatelessWidget {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.white)
                     ),
-                    onPressed: () => {},
+                    onPressed: () => {
+                      print('start scan')
+                    },
                     child: Text(
                       'Start scan',
                       style: TextStyle(color: Colors.black),

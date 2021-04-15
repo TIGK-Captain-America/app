@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class BluetoothDeviceTile extends StatelessWidget {
@@ -20,16 +18,27 @@ class BluetoothDeviceTile extends StatelessWidget {
         },
         child: Container(
           padding: EdgeInsets.only(
-            left: 50,
+            left: 10,
             right: 5,
-            bottom: 22.5,
-            top: 22.5
+            bottom: 20,
+            top: 20
           ),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, Random().nextInt(256), Random().nextInt(256), Random().nextInt(256)),
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.black,
+              width: 1,
+            ),
             borderRadius: BorderRadius.all(Radius.circular(15.0)),
           ),
-          child: Text(this.title),
+          child: Row(
+            children: [
+              Icon(Icons.bluetooth_searching, color: Colors.black, size: 30),
+              Spacer(),
+              Text(this.title),
+              Spacer(flex: 2,)
+            ],
+          ),
         ),
       ),
     );

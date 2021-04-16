@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mower/src/views/scanBluetooth/scanBluetooth.dart';
+import 'package:mower/src/views/bottomNavBar/bottomNavBar.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: ScanBluetoothView(),
+      home: BottomNavBar(),
     );
   }
 }

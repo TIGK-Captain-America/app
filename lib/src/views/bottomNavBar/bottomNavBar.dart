@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mower/src/views/controlMower/controlMower.dart';
 import 'package:mower/src/views/home/home.dart';
+import 'package:mower/src/views/mowerView/mowerView.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -10,8 +12,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
   List<Widget> widgetOptions = <Widget>[
     HomeView(),
-    Text("Mower Screen"),
-    Text("Map Screen"),
+    ControlMowerPage(),
+    MowerView(),
   ];
 
   void onItemTap(int index) {

@@ -11,13 +11,39 @@ class HomeView extends StatelessWidget {
       viewModelBuilder: () => HomeViewModel(),
       onModelReady: (viewModel) => viewModel.initialise(),
       builder: (context, viewModel, child) => Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            viewModel.updateTitle();
-          },
-        ),
-        body: Center(
-          child: Text(viewModel.title),
+        backgroundColor: Color.fromRGBO(255, 159, 105, 1),
+        body: SafeArea(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Text(
+                  'Home',
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Spacer(),
+              Icon(Icons.agriculture, size: (MediaQuery.of(context).size.width / 1.5)),
+              Spacer(),
+              ConstrainedBox(
+                constraints: BoxConstraints.tightFor(width: 300, height: 50),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.white)
+                  ),
+                  onPressed: () => {
+                    print('Disconnect')
+                  },
+                  child: Text(
+                    'Disconnect',
+                    style: TextStyle(color: Colors.black),
+                  )
+                ),
+              ),
+            ],
+          )
         ),
       ),
     );

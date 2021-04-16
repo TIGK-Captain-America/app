@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   stacked: ^2.0.2
+  get: ^4.1.4
   hexcolor: ^2.0.3
 
 

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mower/src/views/bottomNavBar/bottomNavBar.dart';
+import 'package:mower/src/services/bluetoothService.dart';
+import 'package:get_it/get_it.dart';
+import 'package:mower/src/views/scanBluetooth/scanBluetooth.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  GetIt.I.registerSingleton(BluetoothService());
   runApp(MyApp());
 }
 
@@ -24,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: BottomNavBar(),
+      home: ScanBluetoothView(),
     );
   }
 }

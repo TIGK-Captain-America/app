@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:mower/src/services/bluetoothService.dart';
+import 'package:get_it/get_it.dart';
 
 class ScanBluetoothViewModel extends ChangeNotifier {
-  String title = 'default';
+  final BluetoothService _service = GetIt.I.get<BluetoothService>();
 
-  void initialise() {
-    title = 'initialised';
-    notifyListeners();
+  void init() {
   }
 
-  int counter = 0;
-  void updateTitle() {
-    counter++;
-    title = '$counter';
-    notifyListeners();
+  Future<void> startScan() async {
+    if (await _service.canStart()) {
+      print(await _service.scan(timeout: Duration(seconds: 12)));
+    } else {
+      throw Error();
+      // add a check to see the error
+    }
   }
 }

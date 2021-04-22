@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mower/src/views/home/home.dart';
+import 'package:mower/src/views/bottomNavBar/bottomNavBar.dart';
 
 class BluetoothDeviceTile extends StatelessWidget {
   final String title;
@@ -17,7 +17,7 @@ class BluetoothDeviceTile extends StatelessWidget {
       child: GestureDetector(
         onTap: () => {
           print('tapped ${this.title}'),
-          Get.to(() => HomeView())
+          Get.to(() => BottomNavBar())
         },
         child: Container(
           padding: EdgeInsets.only(

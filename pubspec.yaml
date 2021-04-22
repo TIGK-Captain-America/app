@@ -27,6 +27,7 @@ dependencies:
   get: ^4.1.4
   hexcolor: ^2.0.3
   flutter_blue: ^0.8.0
+  get_it: ^6.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

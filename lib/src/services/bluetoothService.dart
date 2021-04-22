@@ -12,7 +12,7 @@ class BluetoothService {
     return _flutterBlue.stopScan();
   }
 
-  Stream<List<ScanResult>> get results => _flutterBlue.scanResults;
+  Stream<List<ScanResult>> get results => _flutterBlue.scanResults.asBroadcastStream();
 
   Stream<BluetoothState> get state => _flutterBlue.state;
 

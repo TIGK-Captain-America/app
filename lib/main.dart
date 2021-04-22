@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mower/src/services/DeviceService.dart';
 import 'package:mower/src/services/bluetoothService.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mower/src/views/scanBluetooth/scanBluetooth.dart';
@@ -7,6 +8,7 @@ import 'package:mower/src/views/scanBluetooth/scanBluetooth.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   GetIt.I.registerSingleton(BluetoothService());
+  GetIt.I.registerSingleton(DeviceService());
   runApp(MyApp());
 }
 

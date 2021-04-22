@@ -9,7 +9,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
-      onModelReady: (viewModel) => viewModel.initialise(),
+      onModelReady: (viewModel) => viewModel.init(),
       builder: (context, viewModel, child) => Scaffold(
         backgroundColor: Color.fromRGBO(255, 159, 105, 1),
         body: SafeArea(
@@ -34,7 +34,7 @@ class HomeView extends StatelessWidget {
                     backgroundColor: MaterialStateProperty.all(Colors.white)
                   ),
                   onPressed: () => {
-                    print('Disconnect')
+                    viewModel.disconnectDevice()
                   },
                   child: Text(
                     'Disconnect',
@@ -42,6 +42,7 @@ class HomeView extends StatelessWidget {
                   )
                 ),
               ),
+              SizedBox(height: 20,)
             ],
           )
         ),

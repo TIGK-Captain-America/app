@@ -44,12 +44,9 @@ class ScanBluetoothView extends StatelessWidget {
                         builder: (BuildContext context,
                             AsyncSnapshot<List<Blue.ScanResult>> snapshot) {
                           if (snapshot.hasError) {
-                            print("error");
-                            print(snapshot.error);
                           } else {
                             switch (snapshot.connectionState) {
                               case ConnectionState.none:
-                                print("none");
                                 return Text("aaaa");
                                 break;
                               case ConnectionState.waiting:
@@ -57,15 +54,13 @@ class ScanBluetoothView extends StatelessWidget {
                                 break;
                               case ConnectionState.active:
                               case ConnectionState.done:
-                                print("hello");
-                                print(snapshot.data);
                                 return ListView.builder(
                                     itemCount: snapshot.data.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return BluetoothDeviceTile(
-                                          title:
-                                              '${snapshot.data[index].device.id} ${snapshot.data[index].device.name}');
+                                        device: snapshot.data[index].device,
+                                      );
                                     });
                                 break;
                             }
@@ -83,7 +78,6 @@ class ScanBluetoothView extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white)),
                     onPressed: () {
-                      print("nu kör vi");
                       viewModel.startScan();
                     },
                     child: Text(

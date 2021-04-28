@@ -11,16 +11,15 @@ class HomeViewModel extends ChangeNotifier {
   void init() async {
     List<BluetoothService> services = await _deviceService.discoverServices();
 
-    services.forEach((service) {
-      print("services ${service}");
+    services.forEach((service) async {
+      if (service.uuid == Guid("0000ffe1-0000-1000-8000-00805f9b34fb")) {
+        service.characteristics.forEach((c) async {
+          if (c.uuid == Guid('0000ffe3-0000-1000-8000-00805f9b34fb')) {
+            _deviceService.setCharacteristic = c;
+          }
+        });
+      }
     });
-
-    var characteristics = services[0].characteristics;
-    for (BluetoothCharacteristic c in characteristics) {
-      print(c.uuid);
-      List<int> value = await c.read();
-      print("value $value");
-    }
   }
 
   Future disconnectDevice() async {

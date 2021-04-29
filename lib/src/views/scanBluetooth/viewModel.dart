@@ -12,7 +12,6 @@ class ScanBluetoothViewModel extends ChangeNotifier {
     if (await _service.canStart()) {
       print(await _service.scan(timeout: Duration(seconds: 12)));
     } else {
-      throw Error();
       // add a check to see the error
     }
   }

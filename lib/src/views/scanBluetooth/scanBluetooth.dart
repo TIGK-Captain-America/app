@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart' as Blue;
-import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mower/src/components/BluetoothDeviceTile.dart';
-import 'package:mower/src/services/DeviceService.dart';
+import 'package:mower/src/components/bluetoothDeviceTile.dart';
 import 'package:mower/src/services/bluetoothService.dart';
-import 'package:mower/src/views/bottomNavBar/bottomNavBar.dart';
 import 'package:mower/src/views/scanBluetooth/viewModel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -33,48 +30,47 @@ class ScanBluetoothView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  bottom: 20,
-                  top: 20,
-                ),
-                child: Container(
-                    height: (MediaQuery.of(context).size.height / 1.33),
-                    child: StreamBuilder<List<Blue.ScanResult>>(
-                      stream: GetIt.I.get<BluetoothService>().results,
-                      initialData: [],
-                      builder: (BuildContext context, AsyncSnapshot<List<Blue.ScanResult>> snapshot) {
-                                  if (snapshot.hasError) {
-                                  } else {
-                                    switch (snapshot.connectionState) {
-                                      case ConnectionState.none:
-                                        return Text("aaaa");
-                                        break;
-                                      case ConnectionState.waiting:
-                                        return CircularProgressIndicator();
-                                        break;
-                                      case ConnectionState.active:
-                                      case ConnectionState.done:
-                                        return ListView.builder(
-                                            itemCount: snapshot.data.length,
-                                            itemBuilder: (BuildContext context,
-                                                int index) {
-                                              return BluetoothDeviceTile(
-                                                device:
-                                                    snapshot.data[index].device,
-                                              );
-                                            });
-                                        break;
-                                    }
-                                  }
+                  padding: EdgeInsets.only(
+                    left: 10,
+                    right: 10,
+                    bottom: 20,
+                    top: 20,
+                  ),
+                  child: Container(
+                      height: (MediaQuery.of(context).size.height / 1.33),
+                      child: StreamBuilder<List<Blue.ScanResult>>(
+                          stream: viewModel.stream,
+                          initialData: [],
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<Blue.ScanResult>> snapshot) {
+                            if (snapshot.hasError) {
+                              return Center(
+                                child: Text("Error"),
+                              );
+                            } else {
+                              switch (snapshot.connectionState) {
+                                case ConnectionState.none:
+                                case ConnectionState.waiting:
+                                  return CircularProgressIndicator();
+                                  break;
+                                case ConnectionState.active:
+                                case ConnectionState.done:
+                                  return ListView.builder(
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return BluetoothDeviceTile(
+                                          device: snapshot.data[index].device,
+                                        );
+                                      });
+                                  break;
+                              }
+                            }
 
-                                  return Center(
-                                    child: Text("start scan"),
-                                  );
-                                }
-                ))
-              ),
+                            return Center(
+                              child: Text("start scan"),
+                            );
+                          }))),
               ConstrainedBox(
                 constraints: BoxConstraints.tightFor(width: 300, height: 50),
                 child: ElevatedButton(

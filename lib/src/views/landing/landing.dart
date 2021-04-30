@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_it/get_it.dart';
-import 'package:mower/src/services/bluetoothService.dart';
 import 'package:mower/src/utils/customStreamError.dart';
 import 'package:mower/src/views/error/error.dart';
 import 'package:mower/src/views/landing/viewModel.dart';

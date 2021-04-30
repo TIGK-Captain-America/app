@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ErrorView extends StatelessWidget {
   final String text;
@@ -7,24 +6,28 @@ class ErrorView extends StatelessWidget {
   final bool showbutton;
 
   const ErrorView(
-      {Key key, @required this.text, this.function, this.showbutton})
+      {Key key, @required this.text, @required this.showbutton, this.function})
       : super(key: key);
 
   Widget buttonView(bool status) {
-    return (status ? Padding(
-      padding: EdgeInsets.only(top: 25),
-      child: ConstrainedBox(
-        constraints: BoxConstraints.tightFor(width: 300, height: 50),
-        child: ElevatedButton(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.black)),
-            onPressed: () => {Get.back()},
-            child: Text(
-              'Ok',
-              style: TextStyle(color: Colors.white),
-            )),
-      ),
-    ) : SizedBox(height: 10,));
+    return (status
+        ? Padding(
+            padding: EdgeInsets.only(top: 25),
+            child: ConstrainedBox(
+              constraints: BoxConstraints.tightFor(width: 300, height: 50),
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.black)),
+                  onPressed: function,
+                  child: Text(
+                    'Ok',
+                    style: TextStyle(color: Colors.white),
+                  )),
+            ),
+          )
+        : SizedBox(
+            height: 10,
+          ));
   }
 
   @override

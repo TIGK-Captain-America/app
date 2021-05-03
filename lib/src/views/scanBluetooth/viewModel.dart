@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart' as Blue;
+import 'package:get/get.dart';
 import 'package:mower/src/services/bluetoothService.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mower/src/views/landing/landing.dart';
 
 class ScanBluetoothViewModel extends ChangeNotifier {
   final BluetoothService _service = GetIt.I.get<BluetoothService>();
@@ -12,10 +14,11 @@ class ScanBluetoothViewModel extends ChangeNotifier {
 
   void startScan() async {
     try {
-      if (await _service.canStart()) {
-        await _service.scan(timeout: Duration(seconds: 12));
+      if (await _service.state.first == Blue.BluetoothState.on &&
+          !(await _service.canStart())) {
+        await _service.scan(timeout: Duration(seconds: 10));
       } else {
-        // add a check to see the error
+        Get.offAll(() => LandingView());
       }
     } catch (e) {
       print("Error: $e");

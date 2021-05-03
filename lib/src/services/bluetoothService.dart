@@ -17,11 +17,9 @@ class BluetoothService {
 
   Stream<BluetoothState> get state => _flutterBlue.state;
 
-  Future<bool> canStart() async {
-    var isAvailable = await _flutterBlue.isAvailable;
-    var isOn = await _flutterBlue.isOn;
+  Future<bool> canStart() {
+    return _flutterBlue.isScanning.first;
 
-    return (isOn && isAvailable);
   }
 
   Future<bool> isConnected() async {

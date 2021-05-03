@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart' as Blue;
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mower/src/services/DeviceService.dart';
+import 'package:mower/src/services/deviceService.dart';
 import 'package:mower/src/services/bluetoothService.dart';
 import 'package:mower/src/views/bottomNavBar/bottomNavBar.dart';
 
@@ -18,12 +18,19 @@ class BluetoothDeviceTile extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           try {
-            await this.device.connect();
-            GetIt.I.get<DeviceService>().device = this.device;
-            await GetIt.I.get<BluetoothService>().stop();
-            Get.offAll(BottomNavBar());
+            if (await this.device.state.first ==
+                Blue.BluetoothDeviceState.connected) {
+              GetIt.I.get<DeviceService>().device = this.device;
+              await GetIt.I.get<BluetoothService>().stop();
+              Get.offAll(() => BottomNavBar());
+            } else {
+              await this.device.connect(autoConnect: false);
+              GetIt.I.get<DeviceService>().device = this.device;
+              await GetIt.I.get<BluetoothService>().stop();
+              Get.offAll(() => BottomNavBar());
+            }
           } catch (e) {
-            print("error $e");
+            print("Error $e");
           }
         },
         child: Container(

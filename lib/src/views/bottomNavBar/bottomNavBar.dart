@@ -33,8 +33,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
         selectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.agriculture), label: 'Mower'),
-          BottomNavigationBarItem(icon: Icon(Icons.alt_route_rounded), label: 'Map'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.agriculture), label: 'Mower'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.alt_route_rounded), label: 'Map'),
         ],
         currentIndex: currentIndex,
         onTap: onItemTap,

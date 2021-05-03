@@ -13,39 +13,37 @@ class HomeView extends StatelessWidget {
       builder: (context, viewModel, child) => Scaffold(
         backgroundColor: Color.fromRGBO(255, 159, 105, 1),
         body: SafeArea(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 10,
+            child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: Text(
+                'Home',
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
-              Center(
-                child: Text(
-                  'Home',
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Spacer(),
-              Icon(Icons.agriculture, size: (MediaQuery.of(context).size.width / 1.5)),
-              Spacer(),
-              ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 300, height: 50),
-                child: ElevatedButton(
+            ),
+            Spacer(),
+            Icon(Icons.agriculture,
+                size: (MediaQuery.of(context).size.width / 1.5)),
+            Spacer(),
+            ConstrainedBox(
+              constraints: BoxConstraints.tightFor(width: 300, height: 50),
+              child: ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.white)
-                  ),
-                  onPressed: () => {
-                    viewModel.disconnectDevice()
-                  },
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
+                  onPressed: () => {viewModel.disconnectDevice()},
                   child: Text(
                     'Disconnect',
                     style: TextStyle(color: Colors.black),
-                  )
-                ),
-              ),
-              SizedBox(height: 20,)
-            ],
-          )
-        ),
+                  )),
+            ),
+            SizedBox(
+              height: 20,
+            )
+          ],
+        )),
       ),
     );
   }

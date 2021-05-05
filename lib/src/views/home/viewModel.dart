@@ -13,6 +13,7 @@ class HomeViewModel extends ChangeNotifier {
   //final BluetoothService _bluetoothService = GetIt.I.get<BluetoothService>();
 
   void init() async {
+
     List<Blue.BluetoothService> services =
         await _deviceService.discoverServices();
 
@@ -32,10 +33,9 @@ class HomeViewModel extends ChangeNotifier {
         Get.offAll(() => LandingView());
       };
       Get.offAll(() => ErrorView(
-        text: "You are connected to the wrong device",
-        showbutton: true,
-        function: function
-      ));
+          text: "You are connected to the wrong device",
+          showbutton: true,
+          function: function));
     }
   }
 

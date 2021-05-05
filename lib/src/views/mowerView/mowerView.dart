@@ -6,6 +6,27 @@ import 'package:stacked/stacked.dart';
 class MowerView extends StatelessWidget {
   const MowerView({Key key}) : super(key: key);
 
+  Widget showPath(MowerViewModel vm) {
+    if (vm.isFinished) {
+      return Expanded(
+          child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        ),
+        margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
+        width: double.infinity,
+        child: CustomPaint(
+          painter: MowerPainter()..nodes = vm.nodes,
+        ),
+      ));
+    } else {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MowerViewModel>.reactive(
@@ -28,18 +49,7 @@ class MowerView extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Expanded(
-                child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(15.0)),
-              ),
-              margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
-              width: double.infinity,
-              child: CustomPaint(
-                painter: MowerPainter(),
-              ),
-            ))
+            showPath(viewModel)
           ],
         )),
       ),

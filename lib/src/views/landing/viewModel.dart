@@ -13,6 +13,7 @@ class LandingViewModel extends ChangeNotifier {
   StreamController<bool> _streamController;
   Timer _timer;
   Blue.BluetoothState _bluetoothState = Blue.BluetoothState.unknown;
+  bool hasShownRequest = false;
 
   void init() {
     _streamController = new StreamController.broadcast();
@@ -22,6 +23,22 @@ class LandingViewModel extends ChangeNotifier {
     _streamController?.add(false);
     _timer = Timer.periodic(Duration(milliseconds: 500), (Timer t) async {
       if (_bluetoothState == Blue.BluetoothState.on) {
+
+        if (await Permission.location.isDenied && !hasShownRequest) {
+          hasShownRequest = true;
+          await Permission.location.request();
+        }
+
+        if (await Permission.locationWhenInUse.isDenied && !hasShownRequest) {
+          hasShownRequest = true;
+          await Permission.locationWhenInUse.request();
+        }
+
+        if (await Permission.locationAlways.isDenied && !hasShownRequest) {
+          hasShownRequest = true;
+          await Permission.locationAlways.request();
+        }
+
         if (await Permission.locationWhenInUse.isGranted ||
             await Permission.location.isGranted ||
             await Permission.locationAlways.isGranted) {

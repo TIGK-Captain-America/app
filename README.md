@@ -1,16 +1,22 @@
 # mower
 
-A new Flutter application.
+## Project 
+Flutter application
 
-## Getting Started
+## Requirements
+### A 1.1:
+The App shall establish a wireless connection with the Robot.  
+#### Low level requirement
+Test
 
-This project is a starting point for a Flutter application.
+### A 1.2:  
+The App shall take user input and translate this to drive commands passed to the Robot.  
+#### Low level requirement
+Test 
 
-A few resources to get you started if this is your first Flutter project:
+### A 1.3:  
+The App shall visualize sensor data from the collision avoidance sensor on the Mower.  
+#### Low level requirement  
+Test
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

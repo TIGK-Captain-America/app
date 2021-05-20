@@ -9,10 +9,14 @@ class MowerViewModel extends ChangeNotifier {
   bool isFinished = false;
 
   void initialise() async {
-    nodes = await pathService.getPath();
+    try {
+      nodes = await pathService.getPath();
 
-    isFinished = true;
-    notifyListeners();
+      isFinished = true;
+      notifyListeners();
+    } catch (e) {
+      //notifyListeners();
+    }
   }
 
   int counter = 0;

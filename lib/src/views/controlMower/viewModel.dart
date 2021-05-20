@@ -7,6 +7,7 @@ class ControlMowerViewModel extends ChangeNotifier {
 
   Future<void> control(List<int> com) async {
     try {
+      print("com: $com");
       await _deviceService.characteristic.write(com);
     } catch (e) {
       print("Error: $e");

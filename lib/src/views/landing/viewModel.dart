@@ -24,20 +24,21 @@ class LandingViewModel extends ChangeNotifier {
     _timer = Timer.periodic(Duration(milliseconds: 500), (Timer t) async {
       if (_bluetoothState == Blue.BluetoothState.on) {
 
-        if (await Permission.location.isDenied && !hasShownRequest) {
+        /*if (await Permission.location.isDenied && !hasShownRequest) {
           hasShownRequest = true;
           await Permission.location.request();
-        }
+        }*/
 
         if (await Permission.locationWhenInUse.isDenied && !hasShownRequest) {
           hasShownRequest = true;
           await Permission.locationWhenInUse.request();
         }
 
+        /*
         if (await Permission.locationAlways.isDenied && !hasShownRequest) {
           hasShownRequest = true;
           await Permission.locationAlways.request();
-        }
+        }*/
 
         if (await Permission.locationWhenInUse.isGranted ||
             await Permission.location.isGranted ||

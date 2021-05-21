@@ -34,9 +34,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.agriculture), label: 'Mower'),
+              icon: Icon(Icons.agriculture), label: 'Drive'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.alt_route_rounded), label: 'Map'),
+              icon: Icon(Icons.alt_route_rounded), label: 'Path'),
         ],
         currentIndex: currentIndex,
         onTap: onItemTap,

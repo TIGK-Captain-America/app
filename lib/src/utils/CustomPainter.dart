@@ -45,6 +45,18 @@ class MowerPainter extends CustomPainter {
     });
 
     print("min: $minX $minY max: $maxX $maxY");
+    print("${(maxX).abs() + (minX).abs()}");
+    print("${(maxY).abs() + (minY).abs()}");
+
+    double a = 1;
+    double b = 1;
+    if ((maxX).abs() + (minX).abs() != 0) {
+      a = ((size.width / 2) / (maxX).abs() + (minX).abs());
+    }
+    if ((maxY).abs() + (minY).abs() != 0) {
+      b = ((size.height / 2) / (maxY).abs() + (minY).abs());
+    }
+    print("b $b");
 
     var startX = size.width / 2;
     var startY = size.height / 2;
@@ -53,8 +65,10 @@ class MowerPainter extends CustomPainter {
       if (element.x == 0 && element.y == 0) {
         path.moveTo(startX, startY);
       } else {
-        startX = (startX + element.x);
-        startY = (startY + element.y);
+        startX = (startX + element.x * (a / 2));
+        print("startX $startX");
+        startY = (startY + element.y * (b / 2));
+        print("startY $startY");
         path.lineTo(startX, startY);
         path.moveTo(startX, startY);
         if (element.collison) {

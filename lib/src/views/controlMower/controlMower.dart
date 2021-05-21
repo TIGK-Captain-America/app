@@ -17,7 +17,7 @@ class ControlMowerPage extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Control Mower',
+            'Control Robot',
             style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
           Spacer(

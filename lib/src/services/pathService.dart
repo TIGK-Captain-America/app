@@ -9,8 +9,10 @@ class PathService {
 
   Future<List<CustomNode>> getPath() async {
     var url = Uri.parse(_url);
-    var response = await http.get(url);
-    List<dynamic> body = jsonDecode(response.body);
+    //var response = await http.get(url);
+    var res =
+        '["lvdDg55Q3FIhKzwIVowM",{"createdAt":{"_seconds":1621587922,"_nanoseconds":497999000},"Nodes":[{"collision":false,"positions":{"w":0,"sensorDistance":0,"x":0,"distance":0,"y":0}},{"positions":{"w":182,"sensorDistance":30,"distance":0,"y":0,"x":0},"collision":false},{"positions":{"distance":6,"w":242,"x":6,"sensorDistance":7,"y":3},"collision":true},{"collision":false,"positions":{"sensorDistance":39,"x":-20,"w":194,"y":9,"distance":-20}}]}]';
+    List<dynamic> body = jsonDecode(res);
 
     List<CustomNode> pathList = [];
 

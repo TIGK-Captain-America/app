@@ -42,7 +42,7 @@ class MowerView extends StatelessWidget {
             ),
             Center(
               child: Text(
-                'View Mower',
+                'View Path',
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
             ),

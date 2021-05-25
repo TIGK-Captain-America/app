@@ -20,9 +20,12 @@ class MowerPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..strokeWidth = 2.0;
 
-    Path path = Path();
+    Paint startPaint = Paint()
+      ..color = Colors.green
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 2.0;
 
-    print("size ${size.width / 2} ${size.height / 2}");
+    Path path = Path();
 
     var minY = _nodes[0].y;
     var minX = _nodes[0].x;
@@ -44,35 +47,48 @@ class MowerPainter extends CustomPainter {
       }
     });
 
-    print("min: $minX $minY max: $maxX $maxY");
-    print("${(maxX).abs() + (minX).abs()}");
-    print("${(maxY).abs() + (minY).abs()}");
+    print("minX: $minX, maxX: $maxX, minY: $minY, maxY: $maxY");
 
-    double a = 1;
-    double b = 1;
-    if ((maxX).abs() + (minX).abs() != 0) {
-      a = ((size.width / 2) / (maxX).abs() + (minX).abs());
-    }
-    if ((maxY).abs() + (minY).abs() != 0) {
-      b = ((size.height / 2) / (maxY).abs() + (minY).abs());
-    }
-    print("b $b");
+    double xMultiplier = 1;
+    double yMultiplier = 1;
 
     var startX = size.width / 2;
     var startY = size.height / 2;
 
+    if ((minX).abs() > (maxX).abs()) {
+      xMultiplier = startX / (minX).abs();
+    } else {
+      xMultiplier = startX / (maxX).abs();
+    }
+
+    if ((minY).abs() > (maxY).abs()) {
+      yMultiplier = startY / (minY).abs();
+    } else {
+      yMultiplier = startY / (maxY).abs();
+    }
+
+    var multiplier = xMultiplier < yMultiplier ? xMultiplier : yMultiplier;
+    multiplier = multiplier * 0.7;
+
+    print("xMulti: $xMultiplier, yMutli: $yMultiplier");
+
+    canvas.drawCircle(Offset(startX, startY), 5, startPaint);
+
     _nodes.forEach((element) {
+      print("element: " + element.x.toString() + ", " + element.y.toString());
       if (element.x == 0 && element.y == 0) {
+        print("startX, startY:  $startX, $startY");
         path.moveTo(startX, startY);
       } else {
-        startX = (startX + element.x * (a / 2));
-        print("startX $startX");
-        startY = (startY + element.y * (b / 2));
-        print("startY $startY");
-        path.lineTo(startX, startY);
-        path.moveTo(startX, startY);
+
+        var currentX = startX + (element.x * multiplier);
+        var currentY = startY + (element.y * multiplier);
+
+        print("startX, startY:  $startX, $startY");
+        path.lineTo(currentX, currentY);
+        path.moveTo(currentX, currentY);
         if (element.collison) {
-          canvas.drawCircle(Offset(startX, startY), 5, collisionPaint);
+          canvas.drawCircle(Offset(currentX, currentY), 5, collisionPaint);
         }
         canvas.drawPath(path, paint);
       }

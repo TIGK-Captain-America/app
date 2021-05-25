@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mower/src/services/deviceService.dart';
+import 'package:mower/src/services/DeviceService.dart';
 
 class ControlMowerViewModel extends ChangeNotifier {
   final DeviceService _deviceService = GetIt.I.get<DeviceService>();

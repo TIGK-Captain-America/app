@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart' as Blue;
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mower/src/services/deviceService.dart';
+import 'package:mower/src/services/DeviceService.dart';
 import 'package:mower/src/services/bluetoothService.dart';
 import 'package:mower/src/views/bottomNavBar/bottomNavBar.dart';
 

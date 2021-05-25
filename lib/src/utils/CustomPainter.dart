@@ -47,8 +47,6 @@ class MowerPainter extends CustomPainter {
       }
     });
 
-    print("minX: $minX, maxX: $maxX, minY: $minY, maxY: $maxY");
-
     double xMultiplier = 1;
     double yMultiplier = 1;
 
@@ -70,21 +68,16 @@ class MowerPainter extends CustomPainter {
     var multiplier = xMultiplier < yMultiplier ? xMultiplier : yMultiplier;
     multiplier = multiplier * 0.7;
 
-    print("xMulti: $xMultiplier, yMutli: $yMultiplier");
-
     canvas.drawCircle(Offset(startX, startY), 5, startPaint);
 
     _nodes.forEach((element) {
-      print("element: " + element.x.toString() + ", " + element.y.toString());
       if (element.x == 0 && element.y == 0) {
-        print("startX, startY:  $startX, $startY");
         path.moveTo(startX, startY);
       } else {
 
         var currentX = startX + (element.x * multiplier);
         var currentY = startY + (element.y * multiplier);
 
-        print("startX, startY:  $startX, $startY");
         path.lineTo(currentX, currentY);
         path.moveTo(currentX, currentY);
         if (element.collison) {

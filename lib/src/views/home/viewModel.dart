@@ -44,7 +44,7 @@ class HomeViewModel extends ChangeNotifier {
       await _deviceService.disconnect();
       Get.offAll(() => ScanBluetoothView());
     } catch (e) {
-      print("disconnect error $e");
+      Get.offAll(() => ErrorView(showbutton: false, text: "Error $e",));
     }
   }
 }

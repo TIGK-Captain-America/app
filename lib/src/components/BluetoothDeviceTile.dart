@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mower/src/services/DeviceService.dart';
 import 'package:mower/src/services/bluetoothService.dart';
 import 'package:mower/src/views/bottomNavBar/bottomNavBar.dart';
+import 'package:mower/src/views/error/error.dart';
 
 class BluetoothDeviceTile extends StatelessWidget {
   final Blue.BluetoothDevice device;
@@ -30,7 +31,7 @@ class BluetoothDeviceTile extends StatelessWidget {
               Get.offAll(() => BottomNavBar());
             }
           } catch (e) {
-            print("Error $e");
+            Get.offAll(() => ErrorView(showbutton: false, text: "Error $e",));
           }
         },
         child: Container(

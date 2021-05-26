@@ -13,7 +13,6 @@ class HomeViewModel extends ChangeNotifier {
   //final BluetoothService _bluetoothService = GetIt.I.get<BluetoothService>();
 
   void init() async {
-
     List<Blue.BluetoothService> services =
         await _deviceService.discoverServices();
 
@@ -22,6 +21,10 @@ class HomeViewModel extends ChangeNotifier {
         service.characteristics.forEach((c) async {
           if (c.uuid == Blue.Guid(Ids.robotCharacteristic)) {
             _deviceService.setCharacteristic = c;
+          }
+          if (c.uuid == Blue.Guid(Ids.notifyCharacteristic)) {
+            await c.setNotifyValue(true);
+            _deviceService.setNotifyCharacteristic = c;
           }
         });
       }
@@ -44,7 +47,10 @@ class HomeViewModel extends ChangeNotifier {
       await _deviceService.disconnect();
       Get.offAll(() => ScanBluetoothView());
     } catch (e) {
-      Get.offAll(() => ErrorView(showbutton: false, text: "Error $e",));
+      Get.offAll(() => ErrorView(
+            showbutton: false,
+            text: "Error $e",
+          ));
     }
   }
 }

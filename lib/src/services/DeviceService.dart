@@ -7,6 +7,7 @@ import 'package:flutter_blue/flutter_blue.dart';
 class DeviceService {
   BluetoothDevice _device;
   BluetoothCharacteristic _sendCharacteristic;
+  BluetoothCharacteristic _notifyCharacteristic;
 
   set device(BluetoothDevice newDevice) {
     _device = newDevice;
@@ -16,7 +17,13 @@ class DeviceService {
     _sendCharacteristic = c;
   }
 
+  set setNotifyCharacteristic(BluetoothCharacteristic c) {
+    _notifyCharacteristic = c;
+  }
+
   BluetoothCharacteristic get characteristic => _sendCharacteristic;
+
+  BluetoothCharacteristic get notify => _notifyCharacteristic;
 
   Future disconnect() {
     return _device.disconnect();

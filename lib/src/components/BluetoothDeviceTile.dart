@@ -31,7 +31,10 @@ class BluetoothDeviceTile extends StatelessWidget {
               Get.offAll(() => BottomNavBar());
             }
           } catch (e) {
-            Get.offAll(() => ErrorView(showbutton: false, text: "Error $e",));
+            Get.offAll(() => ErrorView(
+                  showbutton: false,
+                  text: "Error $e",
+                ));
           }
         },
         child: Container(

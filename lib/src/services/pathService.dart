@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mower/src/models/customNode.dart';
 
-  /// Connects to high level requirements #A1.3
-  /// And the low level requirements:
-  /// - Get coordinates & sensor data from API
+/// Connects to high level requirements #A1.3
+/// And the low level requirements:
+/// - Get coordinates & sensor data from API
 class PathService {
   final String _url =
       "https://us-central1-tigk-captain-america.cloudfunctions.net/Nodes";

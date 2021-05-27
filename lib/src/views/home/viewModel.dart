@@ -10,8 +10,8 @@ import 'package:mower/src/views/scanBluetooth/scanBluetooth.dart';
 
 class HomeViewModel extends ChangeNotifier {
   final DeviceService _deviceService = GetIt.I.get<DeviceService>();
-  //final BluetoothService _bluetoothService = GetIt.I.get<BluetoothService>();
-
+  
+  /// Search for the characteristics and set the right too use.
   void init() async {
     List<Blue.BluetoothService> services =
         await _deviceService.discoverServices();

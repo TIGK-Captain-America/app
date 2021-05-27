@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mower/src/models/customNode.dart';
 
+/// Display the path of the robot with the [CustomNode] and canvas painter
+
 class MowerPainter extends CustomPainter {
   List<CustomNode> _nodes;
 

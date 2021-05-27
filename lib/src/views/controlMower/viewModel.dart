@@ -10,6 +10,11 @@ import 'package:mower/src/views/error/error.dart';
 /// And the low level requirements:
 /// - Handle user input
 /// - Send driver commands with Bluetooth
+
+/// Connects to high level requirements #A1.3
+/// And the low level requirements:
+/// - Get sensor data from Robot
+
 class ControlMowerViewModel extends ChangeNotifier {
   final DeviceService _deviceService = GetIt.I.get<DeviceService>();
 

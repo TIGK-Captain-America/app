@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:mower/src/services/DeviceService.dart';
 import 'package:mower/src/services/bluetoothService.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mower/src/views/bottomNavBar/bottomNavBar.dart';
 import 'package:mower/src/views/landing/landing.dart';
 
 void main() {

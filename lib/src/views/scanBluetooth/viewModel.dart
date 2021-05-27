@@ -3,6 +3,7 @@ import 'package:flutter_blue/flutter_blue.dart' as Blue;
 import 'package:get/get.dart';
 import 'package:mower/src/services/bluetoothService.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mower/src/views/error/error.dart';
 import 'package:mower/src/views/landing/landing.dart';
 
 class ScanBluetoothViewModel extends ChangeNotifier {
@@ -21,7 +22,7 @@ class ScanBluetoothViewModel extends ChangeNotifier {
         Get.offAll(() => LandingView());
       }
     } catch (e) {
-      print("Error: $e");
+      Get.offAll(() => ErrorView(showbutton: false, text: "Error $e",));
     }
   }
 }

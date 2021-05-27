@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mower/src/utils/customPainter.dart';
+import 'package:mower/src/utils/CustomPainter.dart';
 import 'package:mower/src/views/mowerView/viewModel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -42,7 +42,7 @@ class MowerView extends StatelessWidget {
             ),
             Center(
               child: Text(
-                'View Mower',
+                'View Path',
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
             ),

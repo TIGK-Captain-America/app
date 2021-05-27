@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart' as Blue;
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mower/src/services/deviceService.dart';
+import 'package:mower/src/services/DeviceService.dart';
 import 'package:mower/src/utils/Ids.dart';
 import 'package:mower/src/views/error/error.dart';
 import 'package:mower/src/views/landing/landing.dart';
@@ -10,10 +10,9 @@ import 'package:mower/src/views/scanBluetooth/scanBluetooth.dart';
 
 class HomeViewModel extends ChangeNotifier {
   final DeviceService _deviceService = GetIt.I.get<DeviceService>();
-  //final BluetoothService _bluetoothService = GetIt.I.get<BluetoothService>();
-
+  
+  /// Search for the characteristics and set the right too use.
   void init() async {
-
     List<Blue.BluetoothService> services =
         await _deviceService.discoverServices();
 
@@ -22,6 +21,10 @@ class HomeViewModel extends ChangeNotifier {
         service.characteristics.forEach((c) async {
           if (c.uuid == Blue.Guid(Ids.robotCharacteristic)) {
             _deviceService.setCharacteristic = c;
+          }
+          if (c.uuid == Blue.Guid(Ids.notifyCharacteristic)) {
+            await c.setNotifyValue(true);
+            _deviceService.setNotifyCharacteristic = c;
           }
         });
       }
@@ -44,7 +47,10 @@ class HomeViewModel extends ChangeNotifier {
       await _deviceService.disconnect();
       Get.offAll(() => ScanBluetoothView());
     } catch (e) {
-      print("disconnect error $e");
+      Get.offAll(() => ErrorView(
+            showbutton: false,
+            text: "Error $e",
+          ));
     }
   }
 }

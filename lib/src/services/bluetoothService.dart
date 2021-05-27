@@ -1,5 +1,9 @@
 import 'package:flutter_blue/flutter_blue.dart';
 
+  /// Connects to high level requirements #A1.1
+  /// And the low level requirements:
+  /// - Bluetooth Search
+  /// - Bluetooth Connect
 class BluetoothService {
   final FlutterBlue _flutterBlue = FlutterBlue.instance;
 

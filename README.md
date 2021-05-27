@@ -22,21 +22,6 @@ to be able to manually control the mower, and get a visualized representation of
 2. Setup IDE
 3. Follow the instructions in the flutter documentation guide: https://flutter.dev/docs/get-started/install
 
-## Time
-#### Setup code / code structure (estimated: 1h, Actual: 30min) 
-#### Mockups (estimated: 4h, Actual: 3h)
-#### Design + implementation (estimated: 8h Actual: 15h)
-#### Bluetooth search (estimated: 1h Actual: 2h)
-#### Bluetooth research (estimated: 3h Actual: 2h)
-#### Bluetooth connect (estimated: 2h Actual: 2h)
-#### Bluetooth test (estimated: 4h Actual: 2h)
-#### Test with robot (estimated: 1h Actual: 2h 30min)
-#### Add control to drive robot (estimated: 1h Actual: 1h)
-#### Get data from API (estimated: 1h Actual: 30min)
-#### Handle the API data (estimated: 1h Actual: 30min)
-#### Display the data in the app (estimated: 3h Actual: 2h)
-#### Research / Visualize robot path (estimated: 2h Actual: 30min)
-
 ## Requirements
 ### A 1.0: Setup code structure / layout
 #### Low level requirement
@@ -47,10 +32,10 @@ to be able to manually control the mower, and get a visualized representation of
 
 ### A 1.1: The App shall establish a wireless connection with the Robot.  
 #### Low level requirement
-1. Bluetooth 
-  1.1 Search (Actual: 
-  1.2 Connect 
-  1.3 Test
+1. Bluetooth   
+  1.1 Search   
+  1.2 Connect   
+  1.3 Test  
 
 2. Implemented bluetooth views
   2.1 Bluetooth permission view 
